@@ -6,7 +6,7 @@
 
 **WHY:** The first hosted Windows run exposed CRLF translation in the private writer, a pytest-generated environment value larger than Windows' 32,767-character limit, and a Unix-only test assertion. Linux and macOS alone could not reveal these failures.
 
-**WATCH FOR:** Keep the certificate byte-preservation and Unicode checks on Windows. Never use entire large byte fixtures as parameter IDs or compare native Windows path strings with ZIP member names. Hosted unit tests do not establish a manually verified Windows Ollama/Docker first run.
+**WATCH FOR:** Keep the certificate byte-preservation and Unicode checks on Windows. Never use entire large byte fixtures as parameter IDs or compare native Windows path strings with ZIP member names. Inspect collected test IDs after editing decorators; the oversized case must remain named and bounded. Hosted unit tests do not establish a manually verified Windows Ollama/Docker first run.
 
 ## 2026-10-20 — Local RAG Starter publication documentation
 

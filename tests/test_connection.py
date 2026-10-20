@@ -43,7 +43,11 @@ def test_certificate_validation_and_private_save(tmp_path, monkeypatch):
     ssl.create_default_context(cafile=str(path))
 
 
-@pytest.mark.parametrize("data", [b"not a certificate", b"-----BEGIN PRIVATE KEY-----", b"x" * 131073])
+@pytest.mark.parametrize(
+    "data",
+    [b"not a certificate", b"-----BEGIN PRIVATE KEY-----", b"x" * 131073],
+    ids=["invalid-pem", "private-key", "oversized"],
+)
 def test_invalid_certificate_does_not_overwrite(data, tmp_path, monkeypatch):
     import rag.connection as module
 
