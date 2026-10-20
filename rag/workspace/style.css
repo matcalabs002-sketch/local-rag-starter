@@ -1,0 +1,145 @@
+/* Apple-inspired local workspace. Native controls keep their keyboard semantics. */
+:root {
+  --app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --canvas: #f5f5f7;
+  --surface: #ffffff;
+  --surface-secondary: #f0f0f3;
+  --ink: #1d1d1f;
+  --muted: #626269;
+  --line: rgba(30, 30, 38, .10);
+  --accent: #0066cc;
+  --accent-tint: #e5efff;
+  --focus: #007aff;
+  --radius: 16px;
+  --press-duration: 90ms;
+}
+html, body, .stApp, button, input, textarea, select {
+  font-family: var(--app-font);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.stApp { background: var(--canvas); color: var(--ink); }
+.block-container { max-width: 960px; padding: 3.25rem 2.5rem 6rem; }
+h1 { font-family: inherit!important; font-size: clamp(1.8rem, 3vw, 2.2rem)!important; font-weight: 680!important; letter-spacing: -.035em!important; line-height: 1.15!important; padding-bottom: .25rem!important; }
+h2, h3 { font-weight: 620!important; letter-spacing: -.02em!important; }
+h3 { font-size: 1.05rem!important; padding-top: .2rem!important; }
+p { line-height: 1.55; }
+[data-testid="stCaptionContainer"] { color: var(--muted); font-size: .82rem; }
+[data-testid="stHeader"] { background: rgba(245, 245, 247, .82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+[data-testid="stAppDeployButton"] { display: none; }
+/* Structural material: a single frosted sidebar, never stacked glass cards. */
+[data-testid="stSidebar"] { background: rgba(235, 236, 241, .86); border-right: 1px solid var(--line); backdrop-filter: blur(24px) saturate(130%); -webkit-backdrop-filter: blur(24px) saturate(130%); min-width: 240px!important; max-width: 260px!important; }
+[data-testid="stSidebarUserContent"] { padding: 1.7rem 1rem 1.5rem; }
+.sidebar-brand { display: flex; align-items: center; gap: .7rem; margin: .15rem .45rem 1.8rem; }
+.brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; color: white; background: linear-gradient(145deg, #3289f5, #0862cd); box-shadow: 0 2px 5px rgba(0, 87, 191, .18), inset 0 1px 0 rgba(255,255,255,.28); }
+.brand-mark svg { width: 23px; height: 23px; }
+.brand-name { font-weight: 650; font-size: .95rem; letter-spacing: -.025em; }
+.brand-description { color: #626269; font-size: .74rem; margin-top: 1px; }
+.sidebar-label { font-size: .69rem; font-weight: 600; color: var(--muted); margin: 0 .65rem .35rem; letter-spacing: .02em; }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] { gap: 4px; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] { width: 100%; min-height: 43px; padding: .6rem .8rem; border-radius: 9px; transition: background-color 120ms ease, transform var(--press-duration) ease-out; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] > div { display: flex; align-items: center; gap: .65rem; width: 100%; }
+/* Hide only the drawn radio circle; the native input remains focusable. */
+[data-testid="stSidebar"] [data-testid="stRadioOption"] > div > div:first-child { display: none; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] p { font-size: .88rem; line-height: 1.2; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-selected="true"] { background: #dce7f8; color: #0757ad; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"][data-selected="true"] p { font-weight: 600; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"]:hover { background: rgba(0, 0, 0, .035); }
+[data-testid="stSidebar"] [data-testid="stRadioOption"]:active { transform: scale(.985); background: #d4e3fa; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] > div::before { content: ""; width: 19px; height: 19px; flex-shrink: 0; background-color: currentColor; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] > div:nth-child(1) label > div::before { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='1.6' stroke-linejoin='round' d='M5 4h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-6 3V6a2 2 0 0 1 2-2Z'/%3E%3C/svg%3E"); }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] > div:nth-child(2) label > div::before { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='1.6' stroke-linejoin='round' d='M7 3h9l4 4v13H7V3Zm9 0v5h4M3 7v15h12M10 12h7m-7 4h7'/%3E%3C/svg%3E"); }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] > div:nth-child(3) label > div::before { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='black' stroke-width='1.6'%3E%3Cpath d='M4 7h16M4 17h16'/%3E%3Ccircle cx='9' cy='7' r='3' fill='white'/%3E%3Ccircle cx='15' cy='17' r='3' fill='white'/%3E%3C/g%3E%3C/svg%3E"); }
+.sidebar-footer { margin: 2rem .6rem 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .74rem; line-height: 1.65; }
+.sidebar-footer strong { display: block; color: #34343a; font-size: .76rem; font-weight: 550; margin-top: .6rem; }
+.service-line { display: flex; align-items: center; gap: .45rem; margin: .35rem 0; }
+.service-dot { width: 6px; height: 6px; border-radius: 50%; background: #288450; flex-shrink: 0; }
+.service-dot.needs-setup { background: #9b6500; }
+/* Quiet solid controls. Press feedback starts immediately, independent of server work. */
+[data-testid="stButton"] button, [data-testid="stFormSubmitButton"] button, [data-testid="stLinkButton"] a { min-height: 42px; border-radius: 9px; border: 1px solid rgba(0,0,0,.11); background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.025); transition: background-color 120ms ease, transform var(--press-duration) ease-out; }
+[data-testid="stButton"] button:hover, [data-testid="stFormSubmitButton"] button:hover { background: #f5f5f7; border-color: rgba(0,0,0,.20); color: var(--ink); }
+[data-testid="stButton"] button:active, [data-testid="stFormSubmitButton"] button:active { transform: scale(.98); background: #ededf0; }
+button[kind="primary"], button[kind="primaryFormSubmit"] { background: var(--accent)!important; color: white!important; border-color: transparent!important; box-shadow: 0 1px 2px rgba(0,80,170,.12)!important; }
+button[kind="primary"] p, button[kind="primaryFormSubmit"] p { color: white!important; }
+button[kind="primary"]:hover, button[kind="primaryFormSubmit"]:hover { background: #005bb7!important; }
+button:disabled { opacity: .5; transform: none!important; }
+button:focus-visible, a:focus-visible, [data-testid="stRadioOption"]:has(input:focus-visible) { outline: 3px solid var(--focus)!important; outline-offset: 3px; }
+[data-testid="stForm"], [data-testid="stVerticalBlockBorderWrapper"] > div { border-color: var(--line); border-radius: var(--radius); }
+[data-testid="stForm"] { background: var(--surface); padding: 1.35rem; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 2px 6px rgba(0,0,0,.015); }
+[data-testid="stTextInput"] input, [data-testid="stNumberInput"] input { font-size: .9rem; }
+[data-testid="stTextInput"] > div, [data-testid="stNumberInput"] > div, [data-testid="stSelectbox"] [role="group"] { border-radius: 9px; }
+[data-testid="stExpander"] { background: white; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,.015); }
+[data-testid="stExpander"] summary { min-height: 48px; padding: .7rem 1rem; }
+[data-testid="stExpander"] summary p { font-size: .87rem; font-weight: 500; }
+[data-testid="stMetric"] { background: white; padding: 1.05rem 1.3rem; border: 1px solid var(--line); border-radius: 12px; }
+[data-testid="stMetric"] [data-testid="stMetricValue"] { font-size: 1.8rem; font-weight: 600; letter-spacing: -.04em; }
+[data-testid="stFileUploaderDropzone"] { background: #f7f9fc; border: 1px dashed #b7c6da; border-radius: 12px; padding: 1.25rem; }
+[data-testid="stAlert"] { border-radius: 11px; }
+[data-testid="stText"] { white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; font-size: .94rem; line-height: 1.65; }
+[data-testid="stMarkdownContainer"] a { color: var(--accent); text-underline-offset: 3px; }
+.status-row { display: flex; flex-wrap: wrap; gap: .5rem; margin: .3rem 0 .9rem; }
+.status-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .7rem; border-radius: 8px; background: white; color: #365644; border: 1px solid var(--line); font-size: .78rem; font-weight: 500; }
+.status-pill.offline { color: #835700; }
+/* A readable conversation with a clear input surface and subordinate evidence. */
+.st-key-chat_toolbar { margin: .5rem 0 1.2rem; }
+[data-testid="stChatMessage"] { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; margin-bottom: .8rem; gap: .8rem; box-shadow: 0 2px 6px rgba(0,0,0,.015); }
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) { background: #eaf0fa; border-color: #e0e7f1; box-shadow: none; margin-left: 3rem; }
+[data-testid="stChatMessageAvatarUser"], [data-testid="stChatMessageAvatarAssistant"] { background: #edf0f5!important; color: #555d6b!important; border-radius: 9px!important; }
+[data-testid="stChatMessageAvatarAssistant"] { background: #e6effd!important; color: #1762bf!important; }
+[data-testid="stChatMessageContent"] { min-width: 0; }
+[data-testid="stChatMessage"] [data-testid="stExpander"] { background: #fafafb; margin-top: .8rem; box-shadow: none; }
+[data-testid="stChatInput"] { border: 1px solid rgba(0,0,0,.10); background: white; border-radius: 20px; box-shadow: 0 4px 22px rgba(29,29,31,.06); padding: .25rem .35rem .25rem .55rem; }
+[data-testid="stChatInput"]:focus-within { border-color: #2782e6; box-shadow: 0 0 0 3px rgba(0,122,255,.12); }
+[data-testid="stChatInput"] textarea { font-size: .94rem; }
+[data-testid="stChatInput"] textarea::placeholder { color: #76767e; }
+[data-testid="stBottomBlockContainer"] { background: linear-gradient(transparent, var(--canvas) 35%); padding-top: 1.5rem; }
+@media (max-width: 700px) {
+  .block-container { padding: 2rem 1rem 5.5rem; }
+  [data-testid="stSidebar"] { max-width: 270px!important; }
+  [data-testid="stHorizontalBlock"] { flex-wrap: wrap; gap: .7rem; }
+  [data-testid="stColumn"] { min-width: 120px; }
+  [data-testid="stForm"] { padding: 1rem; }
+  [data-testid="stChatMessage"] { padding: 1rem .8rem; gap: .55rem; }
+  [data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) { margin-left: 1rem; }
+  [data-testid="stMetric"] { padding: .9rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto!important; animation: none!important; transition: none!important; }
+  button:active, [data-testid="stRadioOption"]:active { transform: none!important; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  [data-testid="stSidebar"] { background: #eeeef2; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  [data-testid="stHeader"] { background: var(--canvas); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (prefers-contrast: more) {
+  :root { --muted: #424248; --line: #85858c; }
+  [data-testid="stSidebar"] { background: #eeeef2; backdrop-filter: none; }
+  [data-testid="stHeader"] { background: var(--canvas); backdrop-filter: none; }
+  [data-testid="stCaptionContainer"] { color: #424248; }
+}
+
+/* Streamlit declares its own family on descendants; keep text on the platform stack. */
+.stApp :is(h1,h2,h3,h4,p,label,strong,input,textarea,select,button),
+.stApp [data-testid="stText"], .sidebar-brand { font-family: var(--app-font)!important; }
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] > div { width: 100%; }
+[data-testid="stSidebar"] [data-testid="stRadioOption"] { display: block; }
+[data-testid="stChatInput"] > div, [data-testid="stChatInput"] [data-baseweb="textarea"],
+[data-testid="stChatInput"] textarea { background: transparent!important; }
+/* The radio group itself otherwise sizes to its longest label. */
+[data-testid="stSidebar"] [data-testid="stRadioGroup"] { width: 100%!important; }
+.stApp [data-testid="stCaptionContainer"] p { color: var(--muted)!important; opacity: 1; }
+[data-testid="stChatMessage"]:has([aria-label="Chat message from user"]) { background: #eaf0fa; border-color: #e0e7f1; box-shadow: none; margin-left: 3rem; }
+[data-testid="stChatMessage"]:has([aria-label="Chat message from assistant"]) [data-testid="stChatMessageAvatarCustom"] { background: #e6effd!important; color: #1762bf!important; border: none; border-radius: 9px; }
+[data-testid="stChatMessage"]:has([aria-label="Chat message from user"]) [data-testid="stChatMessageAvatarCustom"] { background: #dee7f5!important; color: #425875!important; border: none; border-radius: 9px; }
+@media (max-width: 700px) {
+  [data-testid="stChatMessage"]:has([aria-label="Chat message from user"]) { margin-left: 1rem; }
+}
+[data-testid="stSidebar"] [data-testid="stElementContainer"]:has([data-testid="stRadioGroup"]),
+[data-testid="stSidebar"] [data-testid="stRadio"] { width: 100%!important; }
+@media (prefers-contrast: more) {
+  [data-testid="stSidebar"], [data-testid="stHeader"] { -webkit-backdrop-filter: none; }
+}
+@media (max-width: 700px) {
+  .st-key-chat_toolbar [data-testid="stColumn"]:first-child { flex: 1 1 0!important; min-width: 0; }
+  .st-key-chat_toolbar [data-testid="stColumn"]:last-child { flex: 0 0 112px!important; min-width: 112px; }
+}

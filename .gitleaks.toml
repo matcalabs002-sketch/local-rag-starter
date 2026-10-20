@@ -1,0 +1,3 @@
+title = "Local RAG Starter secret scanning"
+[extend]
+useDefault = true

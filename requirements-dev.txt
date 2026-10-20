@@ -1,0 +1,3 @@
+# Verification and optional connectors use the same pinned dependency versions.
+-c requirements-lock.txt
+-e .[dev,drive,docs]

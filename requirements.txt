@@ -1,0 +1,3 @@
+# Install only runtime dependencies, pinned by the single complete lock.
+-c requirements-lock.txt
+-e .
