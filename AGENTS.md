@@ -1,6 +1,6 @@
 # Starter-kit development
 
-Status (2026-10-20): Local RAG Starter documentation and a fresh-history public export are prepared, with a twelve-step beginner guide, five rendered architecture diagrams, refreshed fictional screenshots, 123 passing tests, nine real-model cases plus conversation isolation, fresh-environment/browser acceptance, tested backup/restore, and clean dependency/source/history scans. Verification boundaries are in VALIDATION.md.
+Status (2026-10-20): Local RAG Starter is published as a public MIT GitHub template with fresh history, with a twelve-step beginner guide, five rendered architecture diagrams, refreshed fictional screenshots, 124 passing local tests, nine real-model cases plus conversation isolation, fresh-environment/browser acceptance, tested backup/restore, and clean dependency/source/history scans. Verification boundaries are in VALIDATION.md.
 
 - Default workflow: uploads → direct extraction → shared splitter → Ollama → local PostgreSQL/pgvector → citation-checked chat.
 - Keep Chat, Sources, and Settings as the three workspace destinations. Activity belongs inside Sources; tutorials and architecture belong in documentation.
@@ -14,4 +14,4 @@ Status (2026-10-20): Local RAG Starter documentation and a fresh-history public 
 - Regenerate START-HERE.html after TUTORIAL.md or guide screenshot changes.
 - Release archives use `python scripts/package_release.py`. Review their contents and scan history before publication.
 
-Next steps: observe hosted CI for the Windows portability fix, then record its final results. The public MIT template is published at https://github.com/matcalabs002-sketch/local-rag-starter with fresh history. Physical cross-browser and full Windows first-run checks remain separate.
+Next steps: maintain the hosted checks linked in VALIDATION.md, complete physical Safari/Firefox checks, and manually verify the full Windows Ollama/Docker first run before claiming that coverage. Public repository: https://github.com/matcalabs002-sketch/local-rag-starter. The existing private application and its source history are preserved separately.

@@ -14,7 +14,7 @@ Date: 2026-10-20. All database verification uses new local storage and fictional
 
 - Optional Google Drive, website-network failure paths, and paid-provider adapters have automated contract/failure tests; this refactor does not claim new live Google, Supabase, OpenAI, or Anthropic verification.
 - Local model checks measure a small fixed fictional corpus. Valid citations do not prove factual entailment or comprehensive prompt-injection resistance.
-- Windows/macOS CI definitions are included. Hosted CI execution, Linux/Windows first runs, physical mobile Safari, Firefox, and public deployment have not been verified in this local session.
+- Hosted CI now exercises Linux database verification and Windows/macOS unit tests; publication outcomes and Windows corrections are recorded below. Complete interactive Linux/Windows first runs, physical mobile Safari, Firefox, and public deployment remain unverified.
 - PostgreSQL is the only implemented vector store. There is no public authentication, multi-user deployment, hosted spending enforcement, OCR, hybrid retrieval, or reranking.
 - Performance depends on hardware, model warmth, source size, and network conditions; recorded local timings are observations, not service guarantees.
 
@@ -50,3 +50,11 @@ The ordinary local preview is intentionally left available separately from the d
 - The documented container-based database dump and copy commands were exercised against the fictional acceptance library. Restoring into a new disposable database preserved its document and passages; the ordinary library was not touched.
 
 - The first hosted CI run passed Linux verification, macOS unit tests, and Gitleaks. Windows exposed private-writer newline translation plus oversized test IDs and native-path assumptions. These are corrected with an additional UTF-8/line-ending regression; the follow-up hosted result is recorded separately.
+
+## Published template and hosted verification
+
+Repository: [Local RAG Starter](https://github.com/matcalabs002-sketch/local-rag-starter), public, MIT, `main`, template enabled. Public history starts with the reviewed starter; original private-app commits, configuration, originals, and conversations were not pushed.
+
+The Windows fixes pass **124 local database-backed tests**. Hosted evidence for the corrected source is [CI run 39381367151](https://github.com/matcalabs002-sketch/local-rag-starter/actions/runs/39381367151); the [workflow page](https://github.com/matcalabs002-sketch/local-rag-starter/actions/workflows/ci.yml) reports the latest branch result. Linux runs the complete PostgreSQL/pgvector suite, lint, dependency consistency/auditing, and guide reproducibility. Windows/macOS run unit tests; the separate secret job scans public history. Read individual job conclusions rather than inferring an end-to-end OS installation from unit checks.
+
+The isolated acceptance container, volume, settings, and fictional runtime data were removed after verification. The existing local workspace remains separate and available. The standalone guide and allowlisted source ZIP match the published documentation.

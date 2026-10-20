@@ -10,7 +10,7 @@
 
 ## 2026-10-20 — Local RAG Starter publication documentation
 
-**WHAT:** Adopted the Local RAG Starter display name without changing Python imports or the distribution name. Added clone-to-first-answer documentation, complete platform-specific terminal steps, prerequisite installation, restart/backup guidance, an architecture walkthrough with component/sequence/database diagrams, and GitHub project links. Source archives now use local-rag-starter.zip. Standalone-guide document links resolve to the public documentation when downloaded separately. Prepared publication from the release allowlist with fresh Git history.
+**WHAT:** Adopted the Local RAG Starter display name without changing Python imports or the distribution name. Added clone-to-first-answer documentation, complete platform-specific terminal steps, prerequisite installation, restart/backup guidance, an architecture walkthrough with component/sequence/database diagrams, and GitHub project links. Source archives now use local-rag-starter.zip. Standalone-guide document links resolve to the public documentation when downloaded separately. Published the public MIT GitHub template from the release allowlist with fresh Git history.
 
 **WHY:** A reusable public template must explain installation and architecture without requiring knowledge of the original application. Original private history and user state must stay outside the public repository.
 

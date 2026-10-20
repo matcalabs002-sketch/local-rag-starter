@@ -1,5 +1,7 @@
 # Local RAG Starter
 
+[![CI](https://github.com/matcalabs002-sketch/local-rag-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/matcalabs002-sketch/local-rag-starter/actions/workflows/ci.yml)
+
 **Build a chatbot that answers from your documents, with sources you can inspect.**
 
 A free, MIT-licensed Python starter kit using **Streamlit**, **Ollama**, and **PostgreSQL with pgvector**. Upload a document, ask a question, and open the passages behind the answer. Run the default workflow on your own computer without a paid AI API or cloud account.
