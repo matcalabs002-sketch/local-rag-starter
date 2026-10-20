@@ -20,5 +20,5 @@ def test_release_allowlist_excludes_private_state_and_symlinks(tmp_path, monkeyp
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text("fixture")
     (tmp_path / "docs" / "linked.txt").symlink_to(tmp_path / ".env")
-    names = {str(relative) for _, relative in package_release.paths()}
+    names = {relative.as_posix() for _, relative in package_release.paths()}
     assert names == {"README.md", ".env.example", "rag/config.py"}

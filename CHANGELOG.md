@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-20 — Windows private-file and verification portability
+
+**WHAT:** Private-file writes explicitly preserve UTF-8 text and supplied line endings, including PEM certificates. Added a Unicode/mixed-line-ending regression. Oversized certificate fixtures have short named test IDs, and release-path assertions use portable POSIX archive paths.
+
+**WHY:** The first hosted Windows run exposed CRLF translation in the private writer, a pytest-generated environment value larger than Windows' 32,767-character limit, and a Unix-only test assertion. Linux and macOS alone could not reveal these failures.
+
+**WATCH FOR:** Keep the certificate byte-preservation and Unicode checks on Windows. Never use entire large byte fixtures as parameter IDs or compare native Windows path strings with ZIP member names. Hosted unit tests do not establish a manually verified Windows Ollama/Docker first run.
+
 ## 2026-10-20 — Local RAG Starter publication documentation
 
 **WHAT:** Adopted the Local RAG Starter display name without changing Python imports or the distribution name. Added clone-to-first-answer documentation, complete platform-specific terminal steps, prerequisite installation, restart/backup guidance, an architecture walkthrough with component/sequence/database diagrams, and GitHub project links. Source archives now use local-rag-starter.zip. Standalone-guide document links resolve to the public documentation when downloaded separately. Prepared publication from the release allowlist with fresh Git history.

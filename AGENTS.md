@@ -14,4 +14,4 @@ Status (2026-10-20): Local RAG Starter documentation and a fresh-history public 
 - Regenerate START-HERE.html after TUTORIAL.md or guide screenshot changes.
 - Release archives use `python scripts/package_release.py`. Review their contents and scan history before publication.
 
-Next steps: complete GitHub workflow-scope authorization, push the reviewed Local RAG Starter export to matcalabs002-sketch/local-rag-starter, observe hosted CI, and update validation with actual outcomes. The public template repository exists; its first push requires the workflow permission. Physical cross-browser checks remain separate.
+Next steps: observe hosted CI for the Windows portability fix, then record its final results. The public MIT template is published at https://github.com/matcalabs002-sketch/local-rag-starter with fresh history. Physical cross-browser and full Windows first-run checks remain separate.

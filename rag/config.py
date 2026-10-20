@@ -161,7 +161,7 @@ def write_private(path: Path, content: str):
     private_dir()
     temp = path.with_suffix(path.suffix + ".tmp")
     fd = os.open(temp, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
-    with os.fdopen(fd, "w") as file:
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as file:
         file.write(content)
     temp.replace(path)
     path.chmod(0o600)

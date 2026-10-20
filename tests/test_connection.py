@@ -62,3 +62,13 @@ def test_transaction_pooler_rejected():
             "folder",
             "https://example.supabase.co",
         ).validate()
+
+
+def test_private_writer_preserves_unicode_and_line_endings(tmp_path, monkeypatch):
+    from rag.config import write_private
+
+    monkeypatch.setattr("rag.config.PRIVATE", tmp_path)
+    content = "Café — private settings\nSecond line\r\n"
+    target = tmp_path / "settings.txt"
+    write_private(target, content)
+    assert target.read_bytes() == content.encode("utf-8")
